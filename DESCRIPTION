@@ -1,11 +1,10 @@
 Package: MinML
-Title: What the Package Does (One Line, Title Case)
+Title: A lightweight machine learning framework in R.
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Ethan", "Greiffenstein", , "ethangreiffenstein@tamu.edu", role = c("aut", "cre"))
+Description: The MinML package will provide a simple, modular interface for constructing, training, and evaluating neural networks inspired by the PyTorch.
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
