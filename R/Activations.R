@@ -73,7 +73,7 @@ activation_leaky_relu <- function(x, alpha = 0.01) {
 #' @title Leaky ReLU Backward Pass (Derivative)
 #' @description Computes the derivative of the Leaky ReLU function: $f'(x) = 1$ if $x > 0$, $\alpha$ otherwise.
 #'
-#' @param output The output of the forward pass (ignored, only input $x$ is needed for derivative calculation).
+#' @param output The output of the forward pass.
 #' @param x The original input to the forward pass.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @param alpha The slope for negative inputs (default: 0.01).

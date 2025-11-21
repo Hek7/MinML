@@ -31,9 +31,9 @@ pak::pak("Hek7/MinML")
 
 ## Example
 
-The package's primary interface is centered around the Module class for defining network architectures and the Tensor class for handling data and computing gradients. Here is a basic example:
+The package's primary interface is centered around the Module class for defining network architectures and the Tensor class for handling data and computing gradients. Here is a basic example
 
-```{r example}
+//```{r example}
 library(MinML)
 
 # Example: Initialize a simple, sequential neural network module

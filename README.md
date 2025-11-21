@@ -29,7 +29,7 @@ and computing gradients. Here is a basic example
 
 //\`\`\`{r example} library(MinML)
 
-# Example: Initialize a simple, sequential neural network module
+# Example: Initialize a simple network
 
 model \<- MinML::Module_Sequential( MinML::Layer_Linear(input_features =
 10, output_features = 64), MinML::Activation_ReLU(),

@@ -13,7 +13,7 @@ activation_leaky_relu_grad(x, grad_output, alpha = 0.01)
 
 \item{alpha}{The slope for negative inputs (default: 0.01).}
 
-\item{output}{The output of the forward pass (ignored, only input $x$ is needed for derivative calculation).}
+\item{output}{The output of the forward pass.}
 }
 \value{
 The gradient with respect to the input, $x$.
