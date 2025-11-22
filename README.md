@@ -21,6 +21,11 @@ You can install the development version of MinML from
 pak::pak("Hek7/MinML")
 ```
 
+## TODO
+
+The finished touches are to write a suite of tests for th test_that
+folder and add to the functions with more optimizers and losses.
+
 ## Example
 
 The package’s primary interface is centered around the Module class for

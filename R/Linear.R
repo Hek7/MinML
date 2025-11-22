@@ -1,4 +1,3 @@
-# --- Initialization Helpers (Simplified to Zeros) ---
 
 #' @title Initialize Weights to Zeros
 #' @description Initializes all weight matrix W elements to zero.
@@ -7,7 +6,6 @@
 #' @param output_features The number of output connections
 #' @return A matrix of zeros.
 initialize_zeros <- function(input_features, output_features) {
-  # Create a matrix filled with zeros
   matrix(
     0,
     nrow = input_features,
