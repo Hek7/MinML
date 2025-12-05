@@ -6,7 +6,6 @@
 #' @param y_true A numeric vector of the true values.
 #' @param y_pred A numeric vector of the predicted values.
 #' @return The calculated MSE as a single numeric value.
-#' @examples
 
 squared_loss <- function(y_true, y_pred) {
   # same length check
