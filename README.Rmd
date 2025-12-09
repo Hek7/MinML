@@ -142,12 +142,6 @@ model_tanh <- Sequential(
   Linear(16, 1)
 )
 
-model_leaky_relu <- Sequential(
-  Linear(2, 16),
-  function(x) activation_leaky_relu(x, alpha = 0.1),
-  Linear(16, 1)
-)
-
 model_gelu <- Sequential(
   Linear(2, 16),
   activation_gelu,
