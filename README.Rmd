@@ -35,4 +35,124 @@ The finished touches are to write a suite of tests for th test_that folder and a
 
 ## Example
 
+### Example on how to build and train a model in MinML
+
+```{r example}
+library(MinML)
+
+# Dummy normal Data 
+X <- matrix(rnorm(50), nrow = 10, ncol = 5)
+
+# Dummy targets 
+y_true <- matrix(rnorm(10), nrow = 10, ncol = 1)
+
+# Define model with linear and activations
+model <- Sequential(
+  Linear(input_features = 5, output_features = 10),
+  activation_relu,
+  Linear(input_features = 10, output_features = 1),
+  activation_sigmoid
+)
+
+# Forward pass returns predictions for current weights
+y_pred <- model$forward(X)
+
+cat("Prediction dimensions:", dim(y_pred), "\n")
+
+# Calculate the loss other losses to get added
+loss <- squared_loss(y_true, y_pred)
+cat("Current MSE Loss:", loss, "\n")
+
+# Backwatd pass to get the grad loss 
+grad_loss <- squared_loss_grad(y_true, y_pred)
+
+# populates the weight and biases grads 
+model$backward(grad_loss)
+
+#Some getters for getting the grads 
+all_grads <- model$get_grads()
+cat("Gradient computed for first layer weights:", !is.null(all_grads[[1]]$dW), "\n")
+```
+
+### Example: Training Loop
+
+```{r example}
+epochs <- 100
+learning_rate <- 0.01
+
+for (epoch in 1:epochs) {
+  
+  # Forward pass 
+  y_pred <- model$forward(X)
+  
+  # Compute Loss
+  loss <- squared_loss(y_true, y_pred)
+  
+  # Backward pass 
+  grad_loss <- squared_loss_grad(y_true, y_pred)
+  
+  # Backprop for grads 
+  model$backward(grad_loss)
+  
+  # Optimize using SGD  
+  for (i in seq_along(model$modules)) {
+    layer <- model$modules[[i]]
+    
+    # Check if the module has parameters (like Linear layers)
+    if ("params" %in% names(layer)) {
+      
+      # Perform SGD update
+      # Returns a list of these new params 
+      updated_params <- sgd_update_params(
+        current_params = layer$params,
+        gradients = layer$grads,
+        learning_rate = learning_rate
+      )
+      
+      # Quirk of the current package is that we have to update these manually 
+      # This is because R lists are like copies and not pass by reference 
+      #   To be fixed in the future 
+      model$modules[[i]]$params <- updated_params
+    }
+  }
+  
+  # Print progress every 10 epochs
+  if (epoch %% 10 == 0) {
+    cat(sprintf("Epoch %d/%d - Loss: %.6f\n", epoch, epochs, loss))
+  }
+}
+
+cat("Training complete.\n")
+```
+
+### Different Activation Functions
+
+Other activation functions:
+
+```{r activations}
+# Create models with different activations
+model_sigmoid <- Sequential(
+  Linear(2, 16),
+  activation_sigmoid,
+  Linear(16, 1)
+)
+
+model_tanh <- Sequential(
+  Linear(2, 16),
+  activation_tanh,
+  Linear(16, 1)
+)
+
+model_leaky_relu <- Sequential(
+  Linear(2, 16),
+  function(x) activation_leaky_relu(x, alpha = 0.1),
+  Linear(16, 1)
+)
+
+model_gelu <- Sequential(
+  Linear(2, 16),
+  activation_gelu,
+  Linear(16, 1)
+)
+```
 

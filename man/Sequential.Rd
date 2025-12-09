@@ -7,8 +7,7 @@
 Sequential(...)
 }
 \arguments{
-\item{...}{A series of MinML modules.
-The modules must have defined 'forward' and 'backward' methods.}
+\item{...}{A series of MinML modules.}
 }
 \value{
 A list representing the Sequential Module.

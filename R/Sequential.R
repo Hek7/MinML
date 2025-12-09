@@ -7,6 +7,7 @@
 #'        The modules must have defined 'forward' and 'backward' methods.
 #' @return A list representing the Sequential Module.
 #'
+#' @export
 Sequential <- function(...) {
   modules <- list(...)
 
@@ -91,7 +92,7 @@ Sequential <- function(...) {
       }
 
       return(current_grad) # Returns the gradient w.r.t the initial input X
-    }
+    },
 
     get_params = function() {
       all_params <- list()
@@ -101,7 +102,7 @@ Sequential <- function(...) {
         }
       }
       return(all_params)
-    }
+    },
 
     get_grads = function() {
       all_grads <- list()
@@ -112,9 +113,6 @@ Sequential <- function(...) {
       }
       return(all_grads)
     }
-
-
-
 
   )
 

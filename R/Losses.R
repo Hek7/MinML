@@ -6,6 +6,7 @@
 #' @param y_true A numeric vector of the true values.
 #' @param y_pred A numeric vector of the predicted values.
 #' @return The calculated MSE as a single numeric value.
+#' @export
 
 squared_loss <- function(y_true, y_pred) {
   # same length check
@@ -25,6 +26,7 @@ squared_loss <- function(y_true, y_pred) {
 #' @param y_true A numeric vector of the true values.
 #' @param y_pred A numeric vector of the predicted values.
 #' @return The gradient matrix/vector.
+#' @export
 squared_loss_grad <- function(y_true, y_pred) {
   N <- nrow(y_pred)
 

@@ -10,7 +10,7 @@ activation_tanh(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the Tanh function.
+The result of the Tanh function, guaranteed to be a matrix.
 }
 \description{
 Computes the Tanh function: $f(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$.

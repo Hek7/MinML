@@ -5,6 +5,7 @@
 #' @param input_features The number of input connections
 #' @param output_features The number of output connections
 #' @return A matrix of zeros.
+#' @export
 initialize_zeros <- function(input_features, output_features) {
   matrix(
     0,
@@ -21,6 +22,7 @@ initialize_zeros <- function(input_features, output_features) {
 #' @param input_features The size of the input vector.
 #' @param output_features The size of the output vector
 #' @return A list representing the Linear Module with initialized weights and biases.
+#' @export
 Linear <- function(input_features, output_features) {
 
   # init weights

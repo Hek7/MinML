@@ -10,7 +10,7 @@ activation_relu(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the ReLU function.
+The result of the ReLU function, guaranteed to be a matrix.
 }
 \description{
 Computes the ReLU function: $f(x) = \max(0, x)$.

@@ -4,16 +4,14 @@
 \alias{activation_leaky_relu_grad}
 \title{Leaky ReLU Backward Pass (Derivative)}
 \usage{
-activation_leaky_relu_grad(x, grad_output, alpha = 0.01)
+activation_leaky_relu_grad(output, grad_output, alpha = 0.01)
 }
 \arguments{
-\item{x}{The original input to the forward pass.}
+\item{output}{The output of the forward pass.}
 
 \item{grad_output}{The gradient of the loss with respect to the output.}
 
 \item{alpha}{The slope for negative inputs (default: 0.01).}
-
-\item{output}{The output of the forward pass.}
 }
 \value{
 The gradient with respect to the input, $x$.

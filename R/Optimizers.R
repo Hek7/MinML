@@ -7,6 +7,7 @@
 #' @param gradients A named list of the calculated gradients.
 #' @param learning_rate The step size (alpha).
 #' @return A new list of updated parameters.
+#' @export
 sgd_update_params <- function(current_params, gradients, learning_rate) {
 
   if (learning_rate <= 0) {

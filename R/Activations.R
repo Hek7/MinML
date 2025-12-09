@@ -3,6 +3,7 @@
 #'
 #' @param x A numeric vector or matrix of pre-activation inputs.
 #' @return The result of the sigmoid function.
+#' @export
 activation_sigmoid <- function(x) {
   1 / (1 + exp(-x))
 }
@@ -13,6 +14,7 @@ activation_sigmoid <- function(x) {
 #' @param output The output of the forward pass, $f(x)$.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @return The gradient with respect to the input, $x$.
+#' @export
 activation_sigmoid_grad <- function(output, grad_output) {
   grad_output * output * (1 - output)
 }
@@ -22,6 +24,7 @@ activation_sigmoid_grad <- function(output, grad_output) {
 #'
 #' @param x A numeric vector or matrix of pre-activation inputs.
 #' @return The result of the Tanh function.
+#' @export
 #'
 activation_tanh <- function(x) {
   tanh(x) # R has a built-in tanh function
@@ -33,6 +36,7 @@ activation_tanh <- function(x) {
 #' @param output The output of the forward pass, $f(x)$.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @return The gradient with respect to the input, $x$.
+#' @export
 activation_tanh_grad <- function(output, grad_output) {
   grad_output * (1 - output^2)
 }
@@ -42,6 +46,7 @@ activation_tanh_grad <- function(output, grad_output) {
 #'
 #' @param x A numeric vector or matrix of pre-activation inputs.
 #' @return The result of the ReLU function.
+#' @export
 #'
 activation_relu <- function(x) {
   pmax(0, x) # Element-wise max function
@@ -53,6 +58,7 @@ activation_relu <- function(x) {
 #' @param output The output of the forward pass, $f(x)$.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @return The gradient with respect to the input, $x$.
+#' @export
 activation_relu_grad <- function(output, grad_output) {
   # The derivative is 1 where the output > 0 (input > 0), and 0 otherwise.
   grad_output * (output > 0)
@@ -64,7 +70,7 @@ activation_relu_grad <- function(output, grad_output) {
 #' @param x A numeric vector or matrix of pre-activation inputs.
 #' @param alpha The slope for negative inputs (default: 0.01).
 #' @return The result of the Leaky ReLU function.
-#'
+#' @export
 #'
 activation_leaky_relu <- function(x, alpha = 0.01) {
   ifelse(x > 0, x, alpha * x)
@@ -77,6 +83,7 @@ activation_leaky_relu <- function(x, alpha = 0.01) {
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @param alpha The slope for negative inputs (default: 0.01).
 #' @return The gradient with respect to the input, $x$.
+#' @export
 activation_leaky_relu_grad <- function(output, grad_output, alpha = 0.01) {
   grad_output * ifelse(output > 0, 1, alpha)
 }
@@ -87,7 +94,7 @@ activation_leaky_relu_grad <- function(output, grad_output, alpha = 0.01) {
 #'
 #' @param x A numeric vector or matrix of pre-activation inputs.
 #' @return The result of the GeLU function.
-#'
+#' @export
 #'
 activation_gelu <- function(x) {
   # R's pnorm is the CDF $\Phi(x)$
@@ -101,6 +108,7 @@ activation_gelu <- function(x) {
 #' @param x The original input to the forward pass.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @return The gradient with respect to the input, $x$.
+#' @export
 activation_gelu_grad <- function(x, grad_output) {
   cdf <- pnorm(x)
   pdf <- dnorm(x)

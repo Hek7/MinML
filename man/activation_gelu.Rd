@@ -10,7 +10,7 @@ activation_gelu(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the GeLU function.
+The result of the GeLU function, guaranteed to be a matrix.
 }
 \description{
 Computes the GeLU function: $f(x) = x \cdot \Phi(x)$, where $\Phi(x)$ is the

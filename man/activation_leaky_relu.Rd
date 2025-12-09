@@ -12,7 +12,7 @@ activation_leaky_relu(x, alpha = 0.01)
 \item{alpha}{The slope for negative inputs (default: 0.01).}
 }
 \value{
-The result of the Leaky ReLU function.
+The result of the Leaky ReLU function, guaranteed to be a matrix.
 }
 \description{
 Computes the Leaky ReLU function: $f(x) = x$ if $x > 0$, $\alpha x$ otherwise.

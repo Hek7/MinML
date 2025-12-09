@@ -12,7 +12,7 @@ activation_gelu_grad(x, grad_output)
 \item{grad_output}{The gradient of the loss with respect to the output.}
 }
 \value{
-The gradient with respect to the input, $x$.
+The gradient with respect to the input, $x$, guaranteed to be a matrix.
 }
 \description{
 Computes the derivative of the GeLU function: $f'(x) = \Phi(x) + x \cdot \phi(x)$,
