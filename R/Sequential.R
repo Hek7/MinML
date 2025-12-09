@@ -92,6 +92,30 @@ Sequential <- function(...) {
 
       return(current_grad) # Returns the gradient w.r.t the initial input X
     }
+
+    get_params = function() {
+      all_params <- list()
+      for (m in module$modules) {
+        if ("params" %in% names(m)) {
+          all_params <- c(all_params, list(m$params))
+        }
+      }
+      return(all_params)
+    }
+
+    get_grads = function() {
+      all_grads <- list()
+      for (m in module$modules) {
+        if ("grads" %in% names(m)) {
+          all_grads <- c(all_grads, list(m$grads))
+        }
+      }
+      return(all_grads)
+    }
+
+
+
+
   )
 
   # Return the composite sequential module

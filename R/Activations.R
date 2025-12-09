@@ -74,13 +74,11 @@ activation_leaky_relu <- function(x, alpha = 0.01) {
 #' @description Computes the derivative of the Leaky ReLU function: $f'(x) = 1$ if $x > 0$, $\alpha$ otherwise.
 #'
 #' @param output The output of the forward pass.
-#' @param x The original input to the forward pass.
 #' @param grad_output The gradient of the loss with respect to the output.
 #' @param alpha The slope for negative inputs (default: 0.01).
 #' @return The gradient with respect to the input, $x$.
-activation_leaky_relu_grad <- function(x, grad_output, alpha = 0.01) {
-  # The derivative is 1 where x > 0, and alpha otherwise.
-  grad_output * ifelse(x > 0, 1, alpha)
+activation_leaky_relu_grad <- function(output, grad_output, alpha = 0.01) {
+  grad_output * ifelse(output > 0, 1, alpha)
 }
 
 #' @title Gaussian Error Linear Unit (GeLU) Activation Function
