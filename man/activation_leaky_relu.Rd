@@ -9,11 +9,11 @@ activation_leaky_relu(x, alpha = 0.01)
 \arguments{
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 
-\item{alpha}{The slope for negative inputs (default: 0.01).}
+\item{alpha}{Slope for negative inputs (default 0.01).}
 }
 \value{
-The result of the Leaky ReLU function, guaranteed to be a matrix.
+The result of the Leaky ReLU as a matrix.
 }
 \description{
-Computes the Leaky ReLU function: $f(x) = x$ if $x > 0$, $\alpha x$ otherwise.
+Computes Leaky ReLU: \eqn{f(x) = x} if x > 0, \eqn{\alpha x} otherwise.
 }

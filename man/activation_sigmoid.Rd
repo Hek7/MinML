@@ -10,8 +10,8 @@ activation_sigmoid(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the sigmoid function, guaranteed to be a matrix.
+The result of the sigmoid function as a matrix.
 }
 \description{
-Computes the Sigmoid function: $f(x) = \frac{1}{1 + e^{-x}}$.
+Computes the Sigmoid function: \eqn{f(x) = 1 / (1 + exp(-x))}.
 }

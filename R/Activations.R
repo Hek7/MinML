@@ -1,3 +1,5 @@
+#' @importFrom stats dnorm pnorm runif
+
 #' @title Sigmoid Activation Function
 #' @description Computes the Sigmoid function: \eqn{f(x) = 1 / (1 + exp(-x))}.
 #'

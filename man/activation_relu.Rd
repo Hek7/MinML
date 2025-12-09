@@ -2,7 +2,7 @@
 % Please edit documentation in R/Activations.R
 \name{activation_relu}
 \alias{activation_relu}
-\title{Rectified Linear Unit (ReLU) Activation Function}
+\title{ReLU Activation Function}
 \usage{
 activation_relu(x)
 }
@@ -10,8 +10,8 @@ activation_relu(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the ReLU function, guaranteed to be a matrix.
+The result of the ReLU function as a matrix.
 }
 \description{
-Computes the ReLU function: $f(x) = \max(0, x)$.
+Computes the ReLU function: \eqn{f(x) = max(0, x)}.
 }

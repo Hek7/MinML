@@ -7,15 +7,15 @@
 activation_leaky_relu_grad(output, grad_output, alpha = 0.01)
 }
 \arguments{
-\item{output}{The output of the forward pass.}
+\item{output}{Output of the forward pass.}
 
-\item{grad_output}{The gradient of the loss with respect to the output.}
+\item{grad_output}{Gradient of the loss w.r.t the output.}
 
-\item{alpha}{The slope for negative inputs (default: 0.01).}
+\item{alpha}{Slope for negative inputs (default 0.01).}
 }
 \value{
-The gradient with respect to the input, $x$, guaranteed to be a matrix.
+Gradient w.r.t the input, as a matrix.
 }
 \description{
-Computes the derivative of the Leaky ReLU function: $f'(x) = 1$ if $x > 0$, $\alpha$ otherwise.
+Computes derivative of Leaky ReLU: \eqn{f'(x) = 1} if x > 0, \eqn{\alpha} otherwise.
 }

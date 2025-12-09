@@ -2,7 +2,7 @@
 % Please edit documentation in R/Activations.R
 \name{activation_gelu}
 \alias{activation_gelu}
-\title{Gaussian Error Linear Unit (GeLU) Activation Function}
+\title{GeLU Activation Function}
 \usage{
 activation_gelu(x)
 }
@@ -10,9 +10,8 @@ activation_gelu(x)
 \item{x}{A numeric vector or matrix of pre-activation inputs.}
 }
 \value{
-The result of the GeLU function, guaranteed to be a matrix.
+The result of the GeLU function as a matrix.
 }
 \description{
-Computes the GeLU function: $f(x) = x \cdot \Phi(x)$, where $\Phi(x)$ is the
-cumulative distribution function (CDF) of the standard normal distribution.
+Computes GeLU: \eqn{f(x) = x * \Phi(x)}, where \eqn{\Phi(x)} is the CDF of standard normal.
 }

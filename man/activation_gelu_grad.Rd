@@ -7,14 +7,13 @@
 activation_gelu_grad(x, grad_output)
 }
 \arguments{
-\item{x}{The original input to the forward pass.}
+\item{x}{Input to the forward pass.}
 
-\item{grad_output}{The gradient of the loss with respect to the output.}
+\item{grad_output}{Gradient of the loss w.r.t the output.}
 }
 \value{
-The gradient with respect to the input, $x$, guaranteed to be a matrix.
+Gradient w.r.t the input, as a matrix.
 }
 \description{
-Computes the derivative of the GeLU function: $f'(x) = \Phi(x) + x \cdot \phi(x)$,
-where $\phi(x)$ is the probability density function (PDF) of the standard normal distribution.
+Computes derivative of GeLU: \eqn{f'(x) = \Phi(x) + x * \phi(x)}, where \eqn{\phi(x)} is the PDF of standard normal.
 }

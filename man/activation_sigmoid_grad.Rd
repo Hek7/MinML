@@ -7,13 +7,13 @@
 activation_sigmoid_grad(output, grad_output)
 }
 \arguments{
-\item{output}{The output of the forward pass, $f(x)$.}
+\item{output}{Output of the forward pass.}
 
-\item{grad_output}{The gradient of the loss with respect to the output.}
+\item{grad_output}{Gradient of the loss w.r.t the output.}
 }
 \value{
-The gradient with respect to the input, $x$, guaranteed to be a matrix.
+Gradient w.r.t the input, as a matrix.
 }
 \description{
-Computes the derivative of the Sigmoid function: $f'(x) = f(x) * (1 - f(x))$.
+Computes the derivative of the Sigmoid function: \eqn{f'(x) = f(x) * (1 - f(x))}.
 }
