@@ -28,9 +28,11 @@ squared_loss <- function(y_true, y_pred) {
 #' @return The gradient matrix/vector.
 #' @export
 squared_loss_grad <- function(y_true, y_pred) {
+  y_true <- as.matrix(y_true)
+  y_pred <- as.matrix(y_pred)
   N <- nrow(y_pred)
 
   grad <- (2 / N) * (y_pred - y_true)
 
-  return(grad)
+  return(as.matrix(grad))
 }

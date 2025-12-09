@@ -63,7 +63,7 @@ cat("Prediction dimensions:", dim(y_pred), "\n")
 loss <- squared_loss(y_true, y_pred)
 cat("Current MSE Loss:", loss, "\n")
 
-# Backwatd pass to get the grad loss 
+# Backward pass to get the grad loss 
 grad_loss <- squared_loss_grad(y_true, y_pred)
 
 # populates the weight and biases grads 
@@ -71,14 +71,16 @@ model$backward(grad_loss)
 
 #Some getters for getting the grads 
 all_grads <- model$get_grads()
-cat("Gradient computed for first layer weights:", !is.null(all_grads[[1]]$dW), "\n")
 ```
 
 ### Example: Training Loop
 
-```{r example}
+```{r training example}
 epochs <- 100
 learning_rate <- 0.01
+
+# Initialize a vector to store loss history
+loss_history <- numeric(epochs)
 
 for (epoch in 1:epochs) {
   
@@ -88,6 +90,9 @@ for (epoch in 1:epochs) {
   # Compute Loss
   loss <- squared_loss(y_true, y_pred)
   
+  # Store loss in history
+  loss_history[epoch] <- loss
+  
   # Backward pass 
   grad_loss <- squared_loss_grad(y_true, y_pred)
   
@@ -96,34 +101,37 @@ for (epoch in 1:epochs) {
   
   # Optimize using SGD  
   for (i in seq_along(model$modules)) {
-    layer <- model$modules[[i]]
+    m <- model$modules[[i]]
     
-    # Check if the module has parameters (like Linear layers)
-    if ("params" %in% names(layer)) {
+    # Only update layers that have params
+    if ("get_params" %in% names(m) && "get_grads" %in% names(m)) {
       
-      # Perform SGD update
-      # Returns a list of these new params 
-      updated_params <- sgd_update_params(
-        current_params = layer$params,
-        gradients = layer$grads,
-        learning_rate = learning_rate
-      )
+      # Get current params & grads
+      params <- m$get_params()
+      grads  <- m$get_grads()
       
-      # Quirk of the current package is that we have to update these manually 
-      # This is because R lists are like copies and not pass by reference 
-      #   To be fixed in the future 
-      model$modules[[i]]$params <- updated_params
+      # Compute updated params
+      updated <- sgd_update_params(params, grads, learning_rate)
+      
+      m$set_params(updated)
+    
+      }
     }
   }
-  
+
   # Print progress every 10 epochs
   if (epoch %% 10 == 0) {
     cat(sprintf("Epoch %d/%d - Loss: %.6f\n", epoch, epochs, loss))
   }
-}
 
 cat("Training complete.\n")
+
+# Plot loss history
+plot(1:epochs, loss_history, type="l", col="blue", lwd=2,
+     xlab="Epoch", ylab="Loss (MSE)", main="Training Loss over Epochs")
+
 ```
+
 
 ### Different Activation Functions
 

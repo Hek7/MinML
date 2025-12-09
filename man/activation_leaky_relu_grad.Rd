@@ -14,7 +14,7 @@ activation_leaky_relu_grad(output, grad_output, alpha = 0.01)
 \item{alpha}{The slope for negative inputs (default: 0.01).}
 }
 \value{
-The gradient with respect to the input, $x$.
+The gradient with respect to the input, $x$, guaranteed to be a matrix.
 }
 \description{
 Computes the derivative of the Leaky ReLU function: $f'(x) = 1$ if $x > 0$, $\alpha$ otherwise.
