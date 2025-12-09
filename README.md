@@ -21,11 +21,6 @@ You can install the development version of MinML from
 pak::pak("Hek7/MinML")
 ```
 
-## TODO
-
-The finished touches are to write a suite of tests for th test_that
-folder and add to the functions with more optimizers and losses.
-
 ## Example
 
 ### Example on how to build and train a model in MinML
@@ -56,24 +51,24 @@ cat("Prediction dimensions:", dim(y_pred), "\n")
 # Calculate the loss other losses to get added
 loss <- squared_loss(y_true, y_pred)
 cat("Current MSE Loss:", loss, "\n")
-#> Current MSE Loss: 1.808478
+#> Current MSE Loss: 1.320475
 
 # Backward pass to get the grad loss 
 grad_loss <- squared_loss_grad(y_true, y_pred)
 
 # populates the weight and biases grads 
 model$backward(grad_loss)
-#>                [,1]          [,2]          [,3]          [,4]          [,5]
-#>  [1,]  1.379593e-02  4.480820e-04  0.0296109226 -2.696864e-02  2.364779e-02
-#>  [2,] -1.025373e-03 -2.924688e-03  0.0035401858 -4.991159e-03  3.770150e-03
-#>  [3,] -2.989546e-04 -1.350317e-04 -0.0002388264  2.322285e-04 -5.437974e-05
-#>  [4,]  1.172883e-03 -6.604360e-04  0.0027025593 -2.699465e-03  3.912006e-03
-#>  [5,] -1.449795e-02 -2.186940e-02 -0.0175663688  1.430846e-02 -1.099508e-03
-#>  [6,]  2.142826e-05 -1.405059e-04  0.0004936034 -4.559050e-04  1.780022e-04
-#>  [7,] -1.677165e-02 -4.482891e-03 -0.0234956942  1.273631e-02 -1.849412e-02
-#>  [8,] -1.191894e-02  1.215185e-02 -0.0213308079  2.368331e-02 -3.123182e-02
-#>  [9,]  6.594566e-05 -4.514603e-05  0.0001198832 -9.911831e-05  1.512183e-04
-#> [10,] -2.307671e-02 -4.029047e-03 -0.0495441274  3.831571e-02 -3.241723e-02
+#>               [,1]         [,2]          [,3]          [,4]          [,5]
+#>  [1,] -0.018373951 -0.041110153  0.0086994641  0.0268395193  0.0044722750
+#>  [2,]  0.046603543  0.033975373  0.0038912040  0.0173854485  0.0193534514
+#>  [3,]  0.003462783 -0.006177783  0.0108879832 -0.0202108261  0.0051046936
+#>  [4,]  0.001474807  0.000624759  0.0005182731 -0.0004250605  0.0006603488
+#>  [5,]  0.008867062  0.001492264 -0.0015506561  0.0012230090 -0.0006349525
+#>  [6,]  0.011895971  0.002002008 -0.0020803463  0.0016407779 -0.0008518466
+#>  [7,] -0.002606051  0.005930438 -0.0013369640  0.0091214198  0.0110346134
+#>  [8,] -0.024811267 -0.015355432  0.0027061014 -0.0004286350 -0.0207932042
+#>  [9,] -0.002097002 -0.020315447 -0.0005575302  0.0077868134  0.0080968985
+#> [10,] -0.080574212 -0.034132924 -0.0283152021  0.0232226443 -0.0360773260
 
 #Some getters for getting the grads 
 all_grads <- model$get_grads()
@@ -123,23 +118,26 @@ for (epoch in 1:epochs) {
     
       }
     }
-  }
 
   # Print progress every 10 epochs
   if (epoch %% 10 == 0) {
     cat(sprintf("Epoch %d/%d - Loss: %.6f\n", epoch, epochs, loss))
   }
-#> Epoch 100/100 - Loss: 1.597576
+}
+#> Epoch 10/100 - Loss: 1.304374
+#> Epoch 20/100 - Loss: 1.285731
+#> Epoch 30/100 - Loss: 1.266161
+#> Epoch 40/100 - Loss: 1.247576
+#> Epoch 50/100 - Loss: 1.231416
+#> Epoch 60/100 - Loss: 1.215397
+#> Epoch 70/100 - Loss: 1.199607
+#> Epoch 80/100 - Loss: 1.184131
+#> Epoch 90/100 - Loss: 1.169031
+#> Epoch 100/100 - Loss: 1.154216
 
 cat("Training complete.\n")
 #> Training complete.
-
-# Plot loss history
-plot(1:epochs, loss_history, type="l", col="blue", lwd=2,
-     xlab="Epoch", ylab="Loss (MSE)", main="Training Loss over Epochs")
 ```
-
-<img src="man/figures/README-training example-1.png" width="100%" />
 
 ### Different Activation Functions
 

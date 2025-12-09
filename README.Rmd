@@ -29,10 +29,6 @@ You can install the development version of MinML from [GitHub](https://github.co
 pak::pak("Hek7/MinML")
 ```
 
-## TODO
-
-The finished touches are to write a suite of tests for th test_that folder and add to the functions with more optimizers and losses. 
-
 ## Example
 
 ### Example on how to build and train a model in MinML
@@ -117,19 +113,14 @@ for (epoch in 1:epochs) {
     
       }
     }
-  }
 
   # Print progress every 10 epochs
   if (epoch %% 10 == 0) {
     cat(sprintf("Epoch %d/%d - Loss: %.6f\n", epoch, epochs, loss))
   }
+}
 
 cat("Training complete.\n")
-
-# Plot loss history
-plot(1:epochs, loss_history, type="l", col="blue", lwd=2,
-     xlab="Epoch", ylab="Loss (MSE)", main="Training Loss over Epochs")
-
 ```
 
 

@@ -72,18 +72,18 @@ Sequential <- function(...) {
       return(current_grad)
     },
 
-    # --- UPDATED GETTERS ---
+    # Getters
 
     get_params = function() {
       all_params <- list()
       for (i in seq_along(module$modules)) {
         m <- module$modules[[i]]
-        # Check for the accessor method
+
+        # Check for the getter
         if ("get_params" %in% names(m)) {
           params <- m$get_params()
 
-          # Fix Name Collisions: Prefix parameters with layer index
-          # e.g., "layer1.W", "layer1.B"
+          # Add layer name to help
           names(params) <- paste0("layer", i, ".", names(params))
 
           all_params <- c(all_params, params)
@@ -96,11 +96,11 @@ Sequential <- function(...) {
       all_grads <- list()
       for (i in seq_along(module$modules)) {
         m <- module$modules[[i]]
-        # Check for the accessor method
+        # Check for the getter
         if ("get_grads" %in% names(m)) {
           grads <- m$get_grads()
 
-          # Apply same naming convention to grads so optimizer matches them
+          # Apply same naming
           names(grads) <- paste0("layer", i, ".", names(grads))
 
           all_grads <- c(all_grads, grads)
